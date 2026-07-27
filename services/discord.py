@@ -1,5 +1,7 @@
+import os
 import requests
-from config import TEST_WEBHOOK
+
+TEST_WEBHOOK = os.getenv("TEST_WEBHOOK")
 
 
 def send_post(post):
