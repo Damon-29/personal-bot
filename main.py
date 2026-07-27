@@ -1,17 +1,9 @@
-from modules.reddit import fetch_posts
-
-posts = fetch_posts()
-
-print(f"Found {len(posts)} posts")
-
-for post in posts[:5]:
-    print(post.title)
-from modules.reddit import fetch_posts
+from modules.registry import load_modules
 from services.state import (
     load_state,
     save_state,
     is_seen,
-    mark_seen
+    mark_seen,
 )
 from services.discord import send_post
 
@@ -19,16 +11,25 @@ from services.discord import send_post
 def main():
     state = load_state()
 
-    posts = fetch_posts()
+    modules = load_modules()
 
-    for post in posts:
+    for module in modules:
 
-        if is_seen(state, "reddit", post.id, post.id):
-            continue
+        posts = module.fetch_posts()
 
-        send_post(post)
+        for post in posts:
 
-        mark_seen(state, "reddit", post.id, post.id)
+            if is_seen(state, post.source, post.feed, post.id):
+                continue
+
+            send_post(post)
+
+            mark_seen(
+                state,
+                post.source,
+                post.feed,
+                post.id,
+            )
 
     save_state(state)
 
