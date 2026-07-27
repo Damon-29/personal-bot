@@ -1,14 +1,13 @@
-from models.post import Post
-from services.discord import send_post
+import os
+import requests
 
+webhook = os.getenv("TEST_WEBHOOK")
 
-post = Post(
-    id="1",
-    game="wuwa",
-    source="test",
-    title="Hello Discord!",
-    url="https://google.com",
-    published="today"
-)
+payload = {
+    "content": "✅ Personal Bot is running from GitHub Actions!"
+}
 
-send_post(post)
+response = requests.post(webhook, json=payload)
+
+print(response.status_code)
+print(response.text)
