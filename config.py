@@ -1,7 +1,26 @@
+import os
+
+TEST_WEBHOOK = os.getenv("TEST_WEBHOOK")
+
 REDDIT_SOURCES = [
     {
-        "game": "Honkai Star Rail",
+        "game": "Wuthering Waves",
+        "name": "WutheringWavesLeaks",
+        "rss": "https://www.reddit.com/r/WutheringWavesLeaks/new/.rss",
+    },
+    {
+        "game": "Genshin Impact",
+        "name": "Genshin_Impact_Leaks",
+        "rss": "https://www.reddit.com/r/Genshin_Impact_Leaks/new/.rss",
+    },
+    {
+        "game": "Zenless Zone Zero",
+        "name": "Zenlesszonezeroleaks_",
+        "rss": "https://www.reddit.com/r/Zenlesszonezeroleaks_/new/.rss",
+    },
+    {
+        "game": "Honkai: Star Rail",
         "name": "HonkaiStarRail_leaks",
         "rss": "https://www.reddit.com/r/HonkaiStarRail_leaks/new/.rss",
-    }
+    },
 ]
