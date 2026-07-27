@@ -31,14 +31,17 @@ def fetch_posts():
             if is_youtube_link(url):
                 continue
 
-            post_id = url.rstrip("/").split("/")[-1]
+            # Stable unique ID from RSS
+            post_id = getattr(entry, "id", url)
 
             author = getattr(entry, "author", "")
 
+            published = getattr(entry, "published", "")
+
             thumbnail = ""
 
-            if "media_thumbnail" in entry:
-                thumbnail = entry.media_thumbnail[0]["url"]
+            if hasattr(entry, "media_thumbnail"):
+                thumbnail = entry.media_thumbnail[0].get("url", "")
 
             posts.append(
                 Post(
@@ -48,7 +51,7 @@ def fetch_posts():
                     feed=source["name"],
                     title=entry.title,
                     url=format_reddit_url(url),
-                    published=entry.published,
+                    published=published,
                     author=author,
                     thumbnail=thumbnail,
                 )
