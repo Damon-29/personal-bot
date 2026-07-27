@@ -3,9 +3,10 @@ from pathlib import Path
 
 STATE_FILE = Path("data/state.json")
 
+MAX_IDS_PER_FEED = 100
+
 
 def load_state():
-    """Load state.json into memory."""
     if not STATE_FILE.exists():
         return {
             "reddit": {},
@@ -18,20 +19,22 @@ def load_state():
 
 
 def save_state(state):
-    """Save the current state to state.json."""
+    STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
+
     with open(STATE_FILE, "w", encoding="utf-8") as f:
         json.dump(state, f, indent=4)
 
 
 def is_seen(state, source, feed, post_id):
-    """
-    Check whether a post has already been processed.
-    """
-    return post_id in state[source].get(feed, [])
+    return post_id in state.get(source, {}).get(feed, [])
 
 
 def mark_seen(state, source, feed, post_id):
-    """
-    Mark a post as processed.
-    """
-    state[source].setdefault(feed, []).append(post_id)
+    state.setdefault(source, {})
+    state[source].setdefault(feed, [])
+
+    if post_id not in state[source][feed]:
+        state[source][feed].append(post_id)
+
+    # Keep only the latest 100 IDs
+    state[source][feed] = state[source][feed][-MAX_IDS_PER_FEED:]
