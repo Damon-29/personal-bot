@@ -4,7 +4,6 @@ TEST_WEBHOOK = os.getenv("TEST_WEBHOOK")
 
 CHECK_INTERVAL = 300
 
-
 REDDIT_SOURCES = [
 
     # =======================
@@ -14,65 +13,56 @@ REDDIT_SOURCES = [
     {
         "game": "wuwa",
         "name": "WutheringWaves",
-        "url": "https://www.reddit.com/r/WutheringWaves/new.json?limit=25",
-        "allowed_flairs": ["Official News"]
+        "rss": "https://www.reddit.com/r/WutheringWaves/new/.rss",
     },
     {
         "game": "wuwa",
         "name": "WutheringWavesLeaks",
-        "url": "https://www.reddit.com/r/WutheringWavesLeaks/new.json?limit=25",
-        "allowed_flairs": []
+        "rss": "https://www.reddit.com/r/WutheringWavesLeaks/new/.rss",
     },
 
     # =======================
-    # Genshin Impact
+    # Genshin
     # =======================
 
     {
         "game": "genshin",
         "name": "Genshin_Impact",
-        "url": "https://www.reddit.com/r/Genshin_Impact/new.json?limit=25",
-        "allowed_flairs": ["Official Post"]
+        "rss": "https://www.reddit.com/r/Genshin_Impact/new/.rss",
     },
     {
         "game": "genshin",
         "name": "Genshin_Impact_Leaks",
-        "url": "https://www.reddit.com/r/Genshin_Impact_Leaks/new.json?limit=25",
-        "allowed_flairs": []
+        "rss": "https://www.reddit.com/r/Genshin_Impact_Leaks/new/.rss",
     },
 
     # =======================
-    # Zenless Zone Zero
+    # ZZZ
     # =======================
 
     {
         "game": "zzz",
         "name": "ZZZ_Official",
-        "url": "https://www.reddit.com/r/ZZZ_Official/new.json?limit=25",
-        "allowed_flairs": ["Official Media"]
+        "rss": "https://www.reddit.com/r/ZZZ_Official/new/.rss",
     },
     {
         "game": "zzz",
         "name": "Zenlesszonezeroleaks_",
-        "url": "https://www.reddit.com/r/Zenlesszonezeroleaks_/new.json?limit=25",
-        "allowed_flairs": []
+        "rss": "https://www.reddit.com/r/Zenlesszonezeroleaks_/new/.rss",
     },
 
     # =======================
-    # Honkai Star Rail
+    # HSR
     # =======================
 
     {
         "game": "hsr",
         "name": "HonkaiStarRail",
-        "url": "https://www.reddit.com/r/HonkaiStarRail/new.json?limit=25",
-        "allowed_flairs": ["Official Announcement"]
+        "rss": "https://www.reddit.com/r/HonkaiStarRail/new/.rss",
     },
     {
         "game": "hsr",
         "name": "HonkaiStarRail_leaks",
-        "url": "https://www.reddit.com/r/HonkaiStarRail_leaks/new.json?limit=25",
-        "allowed_flairs": []
-    }
-
+        "rss": "https://www.reddit.com/r/HonkaiStarRail_leaks/new/.rss",
+    },
 ]
