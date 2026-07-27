@@ -38,7 +38,7 @@ YOUTUBE_SOURCES = {
         {
             "game": "Genshin Impact",
             "name": "Genshin Impact",
-            "rss": "https://www.youtube.com/feeds/videos.xml?channel_id=CHANNEL_ID",
+            "rss": "https://www.youtube.com/feeds/videos.xml?channel_id=UCiS882YPwZt1NfaM0gR0D9Q",
         }
     ],
 
@@ -46,7 +46,7 @@ YOUTUBE_SOURCES = {
         {
             "game": "Zenless Zone Zero",
             "name": "Zenless Zone Zero",
-            "rss": "https://www.youtube.com/feeds/videos.xml?channel_id=CHANNEL_ID",
+            "rss": "https://www.youtube.com/feeds/videos.xml?channel_id=UC2SpC8rL9LaeQriE4YNdyzA",
         }
     ],
 
@@ -54,7 +54,7 @@ YOUTUBE_SOURCES = {
         {
             "game": "Honkai: Star Rail",
             "name": "Honkai: Star Rail",
-            "rss": "https://www.youtube.com/feeds/videos.xml?channel_id=CHANNEL_ID",
+            "rss": "https://www.youtube.com/feeds/videos.xml?channel_id=UC2PeMPA8PAOp-bynLoCeMLA",
         }
     ],
 }
