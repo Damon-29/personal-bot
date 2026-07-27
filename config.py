@@ -30,7 +30,7 @@ YOUTUBE_SOURCES = {
         {
             "game": "Wuthering Waves",
             "name": "Wuthering Waves",
-            "rss": "https://www.youtube.com/feeds/videos.xml?channel_id=CHANNEL_ID",
+            "rss": "https://www.youtube.com/feeds/videos.xml?channel_id=UC0Bi5KMcECRVYis5Gb_ZYZQ",
         }
     ],
 
