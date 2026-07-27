@@ -24,3 +24,25 @@ REDDIT_SOURCES = {
         "rss": "https://www.reddit.com/r/HonkaiStarRail_leaks/new/.rss",
     },
 }
+
+YOUTUBE_SOURCES = {
+    "wuwa": [
+        {
+            "game": "Wuthering Waves",
+            "name": "Wuthering Waves",
+            "rss": "https://www.youtube.com/feeds/videos.xml?channel_id=..."
+        }
+    ],
+
+    "genshin": [
+        ...
+    ],
+
+    "zzz": [
+        ...
+    ],
+
+    "hsr": [
+        ...
+    ]
+}
