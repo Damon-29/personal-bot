@@ -53,6 +53,7 @@ def fetch_posts():
                     id=post["id"],
                     game=source["game"],
                     source="reddit",
+                    feed=source["name"],
                     title=post["title"],
                     url=format_reddit_url(post["permalink"]),
                     published=str(post["created_utc"])
