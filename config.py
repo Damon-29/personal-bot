@@ -12,7 +12,7 @@ REDDIT_SOURCES = [
     {
         "game": "Zenless Zone Zero",
         "name": "ZenlessZoneZeroLeaks",
-        "rss": "https://www.reddit.com/r/ZenlessZoneZeroLeaks/new/.rss",
+        "rss": "https://www.reddit.com/r/ZenlessZoneZeroLeaks_/new/.rss",
     },
     {
         "game": "Honkai: Star Rail",
