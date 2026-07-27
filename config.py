@@ -1,25 +1,20 @@
 import os
 
-# ==========================
-# Discord
-# ==========================
-
 TEST_WEBHOOK = os.getenv("TEST_WEBHOOK")
 
-
-# ==========================
-# Bot
-# ==========================
-
-CHECK_INTERVAL = 300
-
-
-# ==========================
-# Sources
-# ==========================
-
-REDDIT = []
-
-YOUTUBE = []
-
-TWITTER = []
+REDDIT_SOURCES = [
+    {
+        "game": "wuwa",
+        "name": "WutheringWaves",
+        "url": "https://www.reddit.com/r/WutheringWaves/.json",
+        "allowed_flairs": [
+            "Official News"
+        ]
+    },
+    {
+        "game": "wuwa",
+        "name": "WutheringWavesLeaks",
+        "url": "https://www.reddit.com/r/WutheringWavesLeaks/.json",
+        "allowed_flairs": []
+    },
+]
