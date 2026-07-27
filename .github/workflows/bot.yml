@@ -1,14 +1,14 @@
-name: Personal Bot
+name: WuWa Leaks
 
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   run:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
 
     steps:
       - name: Checkout Repository
@@ -28,6 +28,7 @@ jobs:
       - name: Run Bot
         env:
           TEST_WEBHOOK: ${{ secrets.TEST_WEBHOOK }}
+          GAME: wuwa
         run: |
           python main.py
 
@@ -40,7 +41,11 @@ jobs:
 
           if git diff --cached --quiet; then
             echo "No state changes."
-          else
-            git commit -m "Update bot state"
-            git push
+            exit 0
           fi
+
+          git commit -m "Update bot state"
+
+          git pull --rebase origin main
+
+          git push origin main
