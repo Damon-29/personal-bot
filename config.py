@@ -1,7 +1,7 @@
 REDDIT_SOURCES = [
     {
-        "game": "Genshin Impact",
-        "name": "Genshin_Impact_Leaks",
-        "rss": "https://www.reddit.com/r/Genshin_Impact_Leaks/new/.rss",
+        "game": "Zenless Zone Zero",
+        "name": "Zenlesszonezeroleaks_",
+        "rss": "https://www.reddit.com/r/Zenlesszonezeroleaks_/new/.rss",
     }
 ]
