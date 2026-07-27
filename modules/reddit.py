@@ -1,3 +1,4 @@
+import os
 import time
 import requests
 import feedparser
@@ -18,68 +19,75 @@ def fetch_posts():
 
     posts = []
 
-    for source in REDDIT_SOURCES:
+    game_key = os.getenv("GAME")
 
-        print(f"\nChecking {source['name']}...")
+    if not game_key:
+        print("GAME environment variable not set.")
+        return posts
 
-        try:
-            response = requests.get(
-                source["rss"],
-                headers=HEADERS,
-                timeout=20,
+    if game_key not in REDDIT_SOURCES:
+        print(f"Unknown GAME: {game_key}")
+        return posts
+
+    source = REDDIT_SOURCES[game_key]
+
+    print(f"\nChecking {source['name']}...")
+
+    try:
+        response = requests.get(
+            source["rss"],
+            headers=HEADERS,
+            timeout=20,
+        )
+
+        print(f"HTTP Status: {response.status_code}")
+
+        if response.status_code != 200:
+            print("Failed to fetch RSS.")
+            return posts
+
+        feed = feedparser.parse(response.text)
+
+        if feed.bozo:
+            print(f"RSS Parse Error: {feed.bozo_exception}")
+            return posts
+
+        print(f"Found {len(feed.entries)} entries")
+
+        for entry in feed.entries:
+
+            url = entry.link
+
+            if is_youtube_link(url):
+                continue
+
+            post_id = getattr(entry, "id", url)
+            author = getattr(entry, "author", "")
+            published = getattr(entry, "published", "")
+
+            thumbnail = ""
+
+            if hasattr(entry, "media_thumbnail"):
+                thumbnail = entry.media_thumbnail[0].get("url", "")
+
+            posts.append(
+                Post(
+                    id=post_id,
+                    game=source["game"],
+                    source="reddit",
+                    feed=source["name"],
+                    title=entry.title,
+                    url=format_reddit_url(url),
+                    published=published,
+                    author=author,
+                    thumbnail=thumbnail,
+                )
             )
 
-            print(f"HTTP Status: {response.status_code}")
+    except Exception as e:
+        print(f"Request Error: {e}")
 
-            if response.status_code != 200:
-                print("Failed to fetch RSS.")
-                continue
-
-            feed = feedparser.parse(response.text)
-
-            if feed.bozo:
-                print(f"RSS Parse Error: {feed.bozo_exception}")
-                continue
-
-            print(f"Found {len(feed.entries)} entries")
-
-            for entry in feed.entries:
-
-                url = entry.link
-
-                if is_youtube_link(url):
-                    continue
-
-                post_id = getattr(entry, "id", url)
-
-                author = getattr(entry, "author", "")
-
-                published = getattr(entry, "published", "")
-
-                thumbnail = ""
-
-                if hasattr(entry, "media_thumbnail"):
-                    thumbnail = entry.media_thumbnail[0].get("url", "")
-
-                posts.append(
-                    Post(
-                        id=post_id,
-                        game=source["game"],
-                        source="reddit",
-                        feed=source["name"],
-                        title=entry.title,
-                        url=format_reddit_url(url),
-                        published=published,
-                        author=author,
-                        thumbnail=thumbnail,
-                    )
-                )
-
-        except Exception as e:
-            print(f"Request Error: {e}")
-
-        # Small delay between subreddit requests
-        time.sleep(1)
+    time.sleep(1)
 
     print(f"\nCollected {len(posts)} Reddit posts.")
 
