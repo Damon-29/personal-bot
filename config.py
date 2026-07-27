@@ -30,19 +30,31 @@ YOUTUBE_SOURCES = {
         {
             "game": "Wuthering Waves",
             "name": "Wuthering Waves",
-            "rss": "https://www.youtube.com/feeds/videos.xml?channel_id=..."
+            "rss": "https://www.youtube.com/feeds/videos.xml?channel_id=CHANNEL_ID",
         }
     ],
 
     "genshin": [
-        ...
+        {
+            "game": "Genshin Impact",
+            "name": "Genshin Impact",
+            "rss": "https://www.youtube.com/feeds/videos.xml?channel_id=CHANNEL_ID",
+        }
     ],
 
     "zzz": [
-        ...
+        {
+            "game": "Zenless Zone Zero",
+            "name": "Zenless Zone Zero",
+            "rss": "https://www.youtube.com/feeds/videos.xml?channel_id=CHANNEL_ID",
+        }
     ],
 
     "hsr": [
-        ...
-    ]
+        {
+            "game": "Honkai: Star Rail",
+            "name": "Honkai: Star Rail",
+            "rss": "https://www.youtube.com/feeds/videos.xml?channel_id=CHANNEL_ID",
+        }
+    ],
 }
