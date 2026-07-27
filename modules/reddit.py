@@ -7,6 +7,9 @@ from services.formatter import (
     is_youtube_link,
 )
 
+# Only print one raw RSS entry for debugging
+DEBUG_PRINT = True
+
 
 def fetch_posts():
 
@@ -24,7 +27,19 @@ def fetch_posts():
 
         print(f"Found {len(feed.entries)} entries")
 
-        for entry in feed.entries:
+        for i, entry in enumerate(feed.entries):
+
+            # Print the first entry of the first feed once
+            if DEBUG_PRINT and i == 0:
+                print("\n" + "=" * 80)
+                print("RAW RSS ENTRY")
+                print("=" * 80)
+
+                for key, value in entry.items():
+                    print(f"\n[{key}]")
+                    print(value)
+
+                print("=" * 80 + "\n")
 
             url = entry.link
 
