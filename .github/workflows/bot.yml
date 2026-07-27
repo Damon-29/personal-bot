@@ -1,14 +1,27 @@
-name: Test Workflow
+name: Personal Bot
 
 on:
   workflow_dispatch:
 
 jobs:
-  test:
+  run:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - name: Hello
-        run: echo "GitHub Actions is working!"
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Bot
+        env:
+          TEST_WEBHOOK: ${{ secrets.TEST_WEBHOOK }}
+        run: |
+          python main.py
