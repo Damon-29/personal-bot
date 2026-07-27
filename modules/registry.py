@@ -1,12 +1,9 @@
-
 from modules import reddit
-# from modules import youtube
-# from modules import twitter
+from modules import youtube
 
 
-def load_modules():
+def load_modules(config=None):
     return [
         reddit,
-        # youtube,
-        # twitter
+        youtube,
     ]
