@@ -1,13 +1,8 @@
-import os
-import requests
+from modules.reddit import fetch_posts
 
-webhook = os.getenv("TEST_WEBHOOK")
+posts = fetch_posts()
 
-payload = {
-    "content": "✅ Personal Bot is running from GitHub Actions!"
-}
+print(f"Found {len(posts)} posts")
 
-response = requests.post(webhook, json=payload)
-
-print(response.status_code)
-print(response.text)
+for post in posts[:5]:
+    print(post.title)
