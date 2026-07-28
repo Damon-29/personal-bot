@@ -8,6 +8,11 @@ REDDIT_SOURCES = {
         "name": "WutheringWavesLeaks",
         "rss": "https://www.reddit.com/r/WutheringWavesLeaks/new/.rss",
     },
+    "WUWA_OFFICIAL": {
+        "game": "wuwa",
+        "name": "WuWa Official",
+        "rss": "https://www.reddit.com/r/WutheringWaves/.rss",
+    },
     "genshin": {
         "game": "Genshin Impact",
         "name": "Genshin_Impact_Leaks",
