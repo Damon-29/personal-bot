@@ -3,19 +3,18 @@ from urllib.parse import urlparse
 
 def format_reddit_url(url: str) -> str:
     """
-    Convert reddit.com links to vxreddit.com.
+    Keep original Reddit URL.
+    Discord now embeds reddit.com correctly.
     """
-    return url.replace("reddit.com", "vxreddit.com")
+    return url
 
 
 def format_twitter_url(url: str) -> str:
     """
-    Convert x.com links to fxtwitter.com.
+    Keep original X/Twitter URL.
+    Discord now embeds x.com correctly.
     """
-    return (
-        url.replace("x.com", "fxtwitter.com")
-           .replace("twitter.com", "fxtwitter.com")
-    )
+    return url
 
 
 def is_youtube_link(url: str) -> bool:
