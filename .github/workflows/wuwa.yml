@@ -25,12 +25,12 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Run Bot
+      - name: Run test
         env:
           TEST_WEBHOOK: ${{ secrets.TEST_WEBHOOK }}
           GAME: wuwa
         run: |
-          python main.py
+          python reddit_test.py
 
       - name: Commit updated state
         run: |
