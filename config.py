@@ -4,11 +4,11 @@ TEST_WEBHOOK = os.getenv("TEST_WEBHOOK")
 
 REDDIT_SOURCES = [
     "wuwa":{
-        {
-            "game": "Wuthering Waves",
-            "name": "WutheringWavesLeaks",
-            "rss": "https://www.reddit.com/r/WutheringWavesLeaks/new/.rss",
-        },
+        #{
+         #   "game": "Wuthering Waves",
+          #  "name": "WutheringWavesLeaks",
+           # "rss": "https://www.reddit.com/r/WutheringWavesLeaks/new/.rss",
+        #},
         {
             "game": "wuwa",
             "name": "WuWa Official",
