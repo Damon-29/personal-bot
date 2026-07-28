@@ -70,6 +70,20 @@ def fetch_posts():
             if hasattr(entry, "media_thumbnail"):
                 thumbnail = entry.media_thumbnail[0].get("url", "")
 
+            content = ""
+            if hasattr(entry, "content"):
+                content = entry.content[0].value
+
+            print("=" * 80)
+            print(f"TITLE      : {entry.title}")
+            print(f"AUTHOR     : {author}")
+            print(f"PUBLISHED  : {published}")
+            print(f"URL        : {url}")
+            print(f"THUMBNAIL  : {thumbnail}")
+            print("CONTENT PREVIEW:")
+            print(content[:500])
+            print("=" * 80)
+
             posts.append(
                 Post(
                     id=post_id,
